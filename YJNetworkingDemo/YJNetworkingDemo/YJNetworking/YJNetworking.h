@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-/*
- 待完成：重复请求自动取消
- */
-
 /**
  *  成功回调
  *
@@ -49,37 +45,73 @@ typedef NS_ENUM(NSUInteger,YJResponseDataType) {
 
 @interface YJNetworking : NSObject
 
-@property(nonatomic, strong, readonly) NSArray<NSURLSessionTask *> *allSessionTask;
+/** 当前所有的任务 */
+@property(nonatomic, strong, readonly) NSArray<NSURLSessionTask *> *yj_allSessionTask;
 
+/** 单例 */
 + (instancetype)sharedInstance;
 
 /// 参数处理
-- (NSDictionary *)processingParameters:(NSDictionary *)parameters
+- (NSDictionary *)yj_processingParameters:(NSDictionary *)parameters
                                 URLStr:(NSString *)URLStr;
 
 /// url 处理
-- (NSString *)processingURLStr:(NSString *)URLStr;
+- (NSString *)yj_processingURLStr:(NSString *)URLStr;
 
 /// 请求超时时间
-- (NSTimeInterval)timeoutIntervalWithURLStr:(NSString *)URLStr;
+- (NSTimeInterval)yj_timeoutIntervalWithURLStr:(NSString *)URLStr;
 
 /// 样本数据
-- (NSData *)sampleData:(NSString *)url params:(NSDictionary *)params;
+- (NSData *)yj_sampleData:(NSString *)url params:(NSDictionary *)params;
 
 /// 是否执行网络请求结果的回掉
-- (BOOL)network:(NSString *)url params:(NSDictionary *)params task:(NSURLSessionTask *)task result:(id)result error:(NSError *)error;
+- (BOOL)yj_network:(NSString *)url params:(NSDictionary *)params task:(NSURLSessionTask *)task result:(id)result error:(NSError *)error;
 
+
+/**
+ GET简单使用
+
+ @param url url
+ @param params 参数
+ @param successBlock 成功
+ @param failBlock 失败
+ @return 任务对象
+ */
 - (NSURLSessionTask *)GET:(NSString *)url
                    params:(NSDictionary *)params
              successBlock:(YJResponseSuccessBlock)successBlock
                 failBlock:(YJResponseFailBlock)failBlock;
 
+
+/**
+ POST简单使用
+
+ @param url url
+ @param params 参数
+ @param successBlock 成功
+ @param failBlock 失败
+ @return 任务对象
+ */
 - (NSURLSessionTask *)POST:(NSString *)url
                    params:(NSDictionary *)params
              successBlock:(YJResponseSuccessBlock)successBlock
                 failBlock:(YJResponseFailBlock)failBlock;
 
-- (NSURLSessionTask *)network:(YJRequestType)requestType
+
+/**
+ 完全的请求
+
+ @param requestType 请求类型
+ @param url url
+ @param params 参数
+ @param timeoutInterval 超时时间
+ @param responseDataType 响应数据格式
+ @param progressBlock 进度
+ @param successBlock 成功
+ @param failBlock 失败
+ @return 任务对象
+ */
+- (NSURLSessionTask *)yj_network:(YJRequestType)requestType
                           url:(NSString *)url
                        params:(NSDictionary *)params
               timeoutInterval:(NSTimeInterval)timeoutInterval
@@ -87,5 +119,4 @@ typedef NS_ENUM(NSUInteger,YJResponseDataType) {
                 progressBlock:(YJDownloadProgress)progressBlock
                  successBlock:(YJResponseSuccessBlock)successBlock
                     failBlock:(YJResponseFailBlock)failBlock;
-
 @end

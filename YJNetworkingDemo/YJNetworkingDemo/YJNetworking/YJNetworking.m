@@ -7,11 +7,8 @@
 //
 
 #import "YJNetworking.h"
-
 #import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
-
-
 
 static AFNetworkReachabilityStatus networkReachabilityStatus = 0;
 static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
@@ -23,7 +20,7 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
 
 @implementation YJNetworking
 
-- (NSArray<NSURLSessionTask *> *)allSessionTask {
+- (NSArray<NSURLSessionTask *> *)yj_allSessionTask {
     return allSessionTask.copy;
 }
 
@@ -33,7 +30,6 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager startMonitoring];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        NSLog(@"网络状态 : %@", @(status));
         networkReachabilityStatus = status;
     }];
 }
@@ -55,7 +51,6 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         //默认解析模式
         manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-        //        manager.responseSerializer = [AFJSONResponseSerializer serializer];
         
         /// 默认响应数据为二进制
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -70,11 +65,11 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
     return _manager;
 }
 
-- (NSDictionary *)processingParameters:(NSDictionary *)parameters URLStr:(NSString *)URLStr {
+- (NSDictionary *)yj_processingParameters:(NSDictionary *)parameters URLStr:(NSString *)URLStr {
     return parameters;
 }
 
-- (NSString *)processingURLStr:(NSString *)URLStr {
+- (NSString *)yj_processingURLStr:(NSString *)URLStr {
     
     if (URLStr == nil || URLStr.length <= 0) {
         return URLStr;
@@ -99,17 +94,15 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
     return [NSString stringWithFormat:@"http://%@", URLStr];
 }
 
-- (NSTimeInterval)timeoutIntervalWithURLStr:(NSString *)URLStr {
+- (NSTimeInterval)yj_timeoutIntervalWithURLStr:(NSString *)URLStr {
     return 30.f;
 }
 
-- (BOOL)network:(NSString *)url params:(NSDictionary *)params task:(NSURLSessionTask *)task result:(id)result error:(NSError *)error {
+- (BOOL)yj_network:(NSString *)url params:(NSDictionary *)params task:(NSURLSessionTask *)task result:(id)result error:(NSError *)error {
     
     if (task && allSessionTask.count > 0) {
         [allSessionTask removeObject:task];
     }
-    
-    NSLog(@"执行结束前的回掉");
     
     return NO;
 }
@@ -167,20 +160,20 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
     return string;
 }
 
-- (NSData *)sampleData:(NSString *)url params:(NSDictionary *)params {
+- (NSData *)yj_sampleData:(NSString *)url params:(NSDictionary *)params {
     return nil;
 }
 
 - (NSURLSessionTask *)GET:(NSString *)url params:(NSDictionary *)params successBlock:(YJResponseSuccessBlock)successBlock failBlock:(YJResponseFailBlock)failBlock {
     
-    return [self network:(YJRequestTypeGET) url:url params:params timeoutInterval:0 responseDataType:(kYJResponseDataTypeJSON) progressBlock:nil successBlock:successBlock failBlock:failBlock];
+    return [self yj_network:(YJRequestTypeGET) url:url params:params timeoutInterval:0 responseDataType:(kYJResponseDataTypeJSON) progressBlock:nil successBlock:successBlock failBlock:failBlock];
 }
 
 - (NSURLSessionTask *)POST:(NSString *)url params:(NSDictionary *)params successBlock:(YJResponseSuccessBlock)successBlock failBlock:(YJResponseFailBlock)failBlock {
-    return [self network:(YJRequestTypePOST) url:url params:params timeoutInterval:0 responseDataType:(kYJResponseDataTypeJSON) progressBlock:nil successBlock:successBlock failBlock:failBlock];
+    return [self yj_network:(YJRequestTypePOST) url:url params:params timeoutInterval:0 responseDataType:(kYJResponseDataTypeJSON) progressBlock:nil successBlock:successBlock failBlock:failBlock];
 }
 
-- (NSURLSessionTask *)network:(YJRequestType)requestType
+- (NSURLSessionTask *)yj_network:(YJRequestType)requestType
                           url:(NSString *)url
                        params:(NSDictionary *)params
               timeoutInterval:(NSTimeInterval)timeoutInterval
@@ -189,21 +182,21 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
                  successBlock:(YJResponseSuccessBlock)successBlock
                     failBlock:(YJResponseFailBlock)failBlock {
     
-    url = [self processingURLStr:url];
+    url = [self yj_processingURLStr:url];
     
-    params = [self processingParameters:params URLStr:url];
+    params = [self yj_processingParameters:params URLStr:url];
     
     //将session拷贝到堆中，block内部才可以获取得到session
     __block NSURLSessionTask *session = nil;
     AFHTTPSessionManager *manager = [self manager];
     
-    manager.requestSerializer.timeoutInterval = timeoutInterval > 0 ? timeoutInterval :[self timeoutIntervalWithURLStr:url];
+    manager.requestSerializer.timeoutInterval = timeoutInterval > 0 ? timeoutInterval :[self yj_timeoutIntervalWithURLStr:url];
     
     /// 如果url为空直接返回error
     if (url == nil || url.length <= 0) {
         NSError *urlNULL = [NSError errorWithDomain:@"domain" code:999 userInfo:@{NSLocalizedDescriptionKey:@"url error"}];
         
-        BOOL isValid = [self network:url params:params task:session result:nil error:urlNULL];
+        BOOL isValid = [self yj_network:url params:params task:session result:nil error:urlNULL];
         
         if (failBlock && isValid) {
             failBlock(urlNULL);
@@ -212,7 +205,7 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
     }
     
     // 获取样本数据
-    NSData *data = [self sampleData:url params:params];
+    NSData *data = [self yj_sampleData:url params:params];
     
     if (data && data.length > 0) {
         
@@ -222,7 +215,7 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
             result = [self dataFormat:data];
         }
         
-        BOOL isValid = [self network:url params:params task:session result:result error:nil];
+        BOOL isValid = [self yj_network:url params:params task:session result:result error:nil];
         
         if (successBlock && isValid) {
             successBlock(result);
@@ -231,12 +224,11 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
         return session;
     }
     
-    NSLog(@"%ld",networkReachabilityStatus);
     //网络验证
     if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         NSError *urlNULL = [NSError errorWithDomain:@"domain" code:998 userInfo:@{NSLocalizedDescriptionKey:@"no network"}];
         
-        BOOL isValid = [self network:url params:params task:session result:nil error:urlNULL];
+        BOOL isValid = [self yj_network:url params:params task:session result:nil error:urlNULL];
         
         if (failBlock && isValid) {
             failBlock(urlNULL);
@@ -257,7 +249,7 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
                 result = [self dataFormat:responseObject];
             }
             
-            BOOL isValid = [self network:url params:params task:task result:result error:nil];
+            BOOL isValid = [self yj_network:url params:params task:task result:result error:nil];
             
             if (successBlock && isValid) {
                 successBlock(result);
@@ -265,7 +257,7 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
-            BOOL isValid = [self network:url params:params task:task result:nil error:error];
+            BOOL isValid = [self yj_network:url params:params task:task result:nil error:error];
             
             if (failBlock && isValid) {
                 failBlock(error);
@@ -285,13 +277,13 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
                 result = [self dataFormat:responseObject];
             }
             
-            BOOL isValid = [self network:url params:params task:task result:result error:nil];
+            BOOL isValid = [self yj_network:url params:params task:task result:result error:nil];
             
             if (successBlock && isValid) {
                 successBlock(result);
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            BOOL isValid = [self network:url params:params task:task result:nil error:error];
+            BOOL isValid = [self yj_network:url params:params task:task result:nil error:error];
             
             if (failBlock && isValid) {
                 failBlock(error);
@@ -306,7 +298,6 @@ static NSMutableArray<NSURLSessionTask *>  *allSessionTask;//请求任务池
 //    }
     
     if ([allSessionTask containsObject:session]) {
-        
     }
     
     [allSessionTask addObject:session];
