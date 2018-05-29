@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "YJNetworkManager"
+  s.name         = "YJNetworking"
   s.version      = "0.0.3"
   s.summary      = "oc 的网络封装文件"
 
