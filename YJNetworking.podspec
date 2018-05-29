@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "YJNetworking"
-  s.version      = "0.0.2"
+  s.name         = "YJNetworkManager"
+  s.version      = "0.0.3"
   s.summary      = "oc 的网络封装文件"
 
   # This description is used to generate tags and improve search results.
@@ -91,7 +91,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "YJNetworkingDemo/YJNetworkingDemo/YJNetworking/*.{h,m}"
+  s.source_files  = "YJNetworkingDemo/YJNetworkingDemo/Classses/*.{h,m}"
 # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -134,5 +134,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
    s.dependency "AFNetworking", "~> 3.2.0"
+   s.dependency "YYCache", "~> 1.0.4"
 
 end

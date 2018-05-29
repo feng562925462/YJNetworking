@@ -17,4 +17,5 @@ target 'YJNetworkingDemo' do
     # Pods for testing
   end
 pod 'AFNetworking'
+pod 'YYCache'
 end

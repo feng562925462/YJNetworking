@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1896034720BD5A46007FF0AB /* YJNetworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896034120BD5A46007FF0AB /* YJNetworkCache.m */; };
+		1896034820BD5A46007FF0AB /* YJNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896034220BD5A46007FF0AB /* YJNetworkManager.m */; };
+		1896034920BD5A46007FF0AB /* YJNetworkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896034420BD5A46007FF0AB /* YJNetworkItem.m */; };
 		18D6D11A2086F990007E289F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6D1192086F990007E289F /* AppDelegate.m */; };
 		18D6D11D2086F990007E289F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6D11C2086F990007E289F /* ViewController.m */; };
 		18D6D1202086F990007E289F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D6D11E2086F990007E289F /* Main.storyboard */; };
@@ -15,7 +18,6 @@
 		18D6D1282086F992007E289F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6D1272086F992007E289F /* main.m */; };
 		18D6D1322086F992007E289F /* YJNetworkingDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6D1312086F992007E289F /* YJNetworkingDemoTests.m */; };
 		18D6D13D2086F992007E289F /* YJNetworkingDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6D13C2086F992007E289F /* YJNetworkingDemoUITests.m */; };
-		18D6D14D2086FA23007E289F /* YJNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6D14B2086FA23007E289F /* YJNetworking.m */; };
 		741E65D0FB1BFDF271E423DF /* libPods-YJNetworkingDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6709FC91EBE5CD227D682FEF /* libPods-YJNetworkingDemoUITests.a */; };
 		876C74B7367E6AD2938CE394 /* libPods-YJNetworkingDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3772E4E156C1FAE7B2AEB662 /* libPods-YJNetworkingDemoTests.a */; };
 		951A4278A02F7EF2C0CDCF2C /* libPods-YJNetworkingDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E243B0055D15D538974374C /* libPods-YJNetworkingDemo.a */; };
@@ -40,6 +42,12 @@
 
 /* Begin PBXFileReference section */
 		0A4800B51C37D60F75EE049D /* Pods-YJNetworkingDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YJNetworkingDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YJNetworkingDemoUITests/Pods-YJNetworkingDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1896034120BD5A46007FF0AB /* YJNetworkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJNetworkCache.m; sourceTree = "<group>"; };
+		1896034220BD5A46007FF0AB /* YJNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJNetworkManager.m; sourceTree = "<group>"; };
+		1896034320BD5A46007FF0AB /* YJNetworkItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJNetworkItem.h; sourceTree = "<group>"; };
+		1896034420BD5A46007FF0AB /* YJNetworkItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJNetworkItem.m; sourceTree = "<group>"; };
+		1896034520BD5A46007FF0AB /* YJNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJNetworkManager.h; sourceTree = "<group>"; };
+		1896034620BD5A46007FF0AB /* YJNetworkCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJNetworkCache.h; sourceTree = "<group>"; };
 		18D2BD69217E8D33BEEE837C /* Pods-YJNetworkingDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YJNetworkingDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-YJNetworkingDemo/Pods-YJNetworkingDemo.release.xcconfig"; sourceTree = "<group>"; };
 		18D6D1152086F990007E289F /* YJNetworkingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YJNetworkingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D6D1182086F990007E289F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -57,8 +65,6 @@
 		18D6D1382086F992007E289F /* YJNetworkingDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YJNetworkingDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D6D13C2086F992007E289F /* YJNetworkingDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJNetworkingDemoUITests.m; sourceTree = "<group>"; };
 		18D6D13E2086F992007E289F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18D6D14B2086FA23007E289F /* YJNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJNetworking.m; sourceTree = "<group>"; };
-		18D6D14C2086FA23007E289F /* YJNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJNetworking.h; sourceTree = "<group>"; };
 		3772E4E156C1FAE7B2AEB662 /* libPods-YJNetworkingDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YJNetworkingDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6709FC91EBE5CD227D682FEF /* libPods-YJNetworkingDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YJNetworkingDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E243B0055D15D538974374C /* libPods-YJNetworkingDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YJNetworkingDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,7 +140,7 @@
 		18D6D1172086F990007E289F /* YJNetworkingDemo */ = {
 			isa = PBXGroup;
 			children = (
-				18D6D14A2086F9AF007E289F /* YJNetworking */,
+				18D6D14A2086F9AF007E289F /* Classses */,
 				18D6D1182086F990007E289F /* AppDelegate.h */,
 				18D6D1192086F990007E289F /* AppDelegate.m */,
 				18D6D11B2086F990007E289F /* ViewController.h */,
@@ -166,13 +172,17 @@
 			path = YJNetworkingDemoUITests;
 			sourceTree = "<group>";
 		};
-		18D6D14A2086F9AF007E289F /* YJNetworking */ = {
+		18D6D14A2086F9AF007E289F /* Classses */ = {
 			isa = PBXGroup;
 			children = (
-				18D6D14C2086FA23007E289F /* YJNetworking.h */,
-				18D6D14B2086FA23007E289F /* YJNetworking.m */,
+				1896034620BD5A46007FF0AB /* YJNetworkCache.h */,
+				1896034120BD5A46007FF0AB /* YJNetworkCache.m */,
+				1896034320BD5A46007FF0AB /* YJNetworkItem.h */,
+				1896034420BD5A46007FF0AB /* YJNetworkItem.m */,
+				1896034520BD5A46007FF0AB /* YJNetworkManager.h */,
+				1896034220BD5A46007FF0AB /* YJNetworkManager.m */,
 			);
-			path = YJNetworking;
+			path = Classses;
 			sourceTree = "<group>";
 		};
 		D92CB76A66064A93D3BA79A3 /* Frameworks */ = {
@@ -196,8 +206,6 @@
 				18D6D1112086F990007E289F /* Sources */,
 				18D6D1122086F990007E289F /* Frameworks */,
 				18D6D1132086F990007E289F /* Resources */,
-				B85842E369AC376A6935B21B /* [CP] Embed Pods Frameworks */,
-				563EAC60AFC801DF2ABBB453 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -216,8 +224,6 @@
 				18D6D1292086F992007E289F /* Sources */,
 				18D6D12A2086F992007E289F /* Frameworks */,
 				18D6D12B2086F992007E289F /* Resources */,
-				2B4095327DBA61F825A438EA /* [CP] Embed Pods Frameworks */,
-				05235BE294470531CCE127C5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,8 +243,6 @@
 				18D6D1342086F992007E289F /* Sources */,
 				18D6D1352086F992007E289F /* Frameworks */,
 				18D6D1362086F992007E289F /* Resources */,
-				31B236634A287F9CB9573CED /* [CP] Embed Pods Frameworks */,
-				D219271A72A9F09A82D68A41 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,21 +324,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		05235BE294470531CCE127C5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YJNetworkingDemoTests/Pods-YJNetworkingDemoTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		11C1F045AAC3A432424809AF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -351,51 +340,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2B4095327DBA61F825A438EA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YJNetworkingDemoTests/Pods-YJNetworkingDemoTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		31B236634A287F9CB9573CED /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YJNetworkingDemoUITests/Pods-YJNetworkingDemoUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		563EAC60AFC801DF2ABBB453 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YJNetworkingDemo/Pods-YJNetworkingDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A5A5F4D597241326F94C2EBB /* [CP] Check Pods Manifest.lock */ = {
@@ -434,36 +378,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B85842E369AC376A6935B21B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YJNetworkingDemo/Pods-YJNetworkingDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D219271A72A9F09A82D68A41 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YJNetworkingDemoUITests/Pods-YJNetworkingDemoUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -471,9 +385,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D6D14D2086FA23007E289F /* YJNetworking.m in Sources */,
+				1896034920BD5A46007FF0AB /* YJNetworkItem.m in Sources */,
+				1896034820BD5A46007FF0AB /* YJNetworkManager.m in Sources */,
 				18D6D11D2086F990007E289F /* ViewController.m in Sources */,
 				18D6D1282086F992007E289F /* main.m in Sources */,
+				1896034720BD5A46007FF0AB /* YJNetworkCache.m in Sources */,
 				18D6D11A2086F990007E289F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,10 +562,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YJNetworkingDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.YJNetworkingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -663,10 +576,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YJNetworkingDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.YJNetworkingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -680,11 +590,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YJNetworkingDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.YJNetworkingDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -699,11 +605,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YJNetworkingDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.YJNetworkingDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -717,11 +619,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YJNetworkingDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.YJNetworkingDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -735,11 +633,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YJNetworkingDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.YJNetworkingDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
