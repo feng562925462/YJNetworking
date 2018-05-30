@@ -227,7 +227,6 @@ static YJHttpResponseSerializer _httpResponseSerializer = YJHttpResponseSerializ
 }
 
 - (NSURLSessionTask *)yj_requestWithItem:(YJNetworkItem *)item {
-    
     YJWeak;
     /* 地址中文处理 */
     NSString *URLString = item.urlString.yj_URLAutomaticCompletion.yj_UTF8String;
@@ -259,12 +258,16 @@ static YJHttpResponseSerializer _httpResponseSerializer = YJHttpResponseSerializ
     
     // 读取缓存
     id responseCacheData = [YJNetworkCache yj_httpCacheWithUrlString:item.urlString parameters:item.parameters];
-    
+
     if (item.isNeedCache && responseCacheData != nil)
     {
-        if (item.successBlock)
+        id result = _httpResponseSerializer == YJHttpResponseSerializerJSON ? [self dataFormat:responseCacheData] : responseCacheData;
+        
+         BOOL isValid = [self yj_network:item task:sessionTask result:result error:nil];
+        
+        if (item.successBlock && isValid)
         {
-            item.successBlock([self dataFormat:responseCacheData]);
+            item.successBlock(result);
         }
         [[weakSelf tasks] removeObject:sessionTask];
         return nil;
@@ -282,9 +285,13 @@ static YJHttpResponseSerializer _httpResponseSerializer = YJHttpResponseSerializ
             });
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            if (item.successBlock)
+            id result = _httpResponseSerializer == YJHttpResponseSerializerJSON ? [self dataFormat:responseObject] : responseObject;
+            
+            BOOL isValid = [self yj_network:item task:task result:result error:nil];
+            
+            if (item.successBlock && isValid)
             {
-                item.successBlock([self dataFormat:responseObject]);
+                item.successBlock(result);
             }
             // 对数据进行异步缓存
             [YJNetworkCache yj_setHttpCache:responseObject urlString:item.urlString parameters:item.parameters];
@@ -292,7 +299,8 @@ static YJHttpResponseSerializer _httpResponseSerializer = YJHttpResponseSerializ
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
-            if (item.failureBlock)
+            BOOL isValid = [self yj_network:item task:task result:nil error:error];
+            if (item.failureBlock && isValid)
             {
                 item.failureBlock(error);
             }
@@ -302,7 +310,6 @@ static YJHttpResponseSerializer _httpResponseSerializer = YJHttpResponseSerializ
     else if (item.httpRequestType == YJHttpRequestTypePost)
     {
         sessionTask = [sessionManager POST:URLString parameters:item.parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-            NSLog(@"上传进度--%lld, 总进度---%lld",uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
             
             /*! 回到主线程刷新UI */
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -312,11 +319,13 @@ static YJHttpResponseSerializer _httpResponseSerializer = YJHttpResponseSerializ
                 }
             });
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSLog(@"post 请求数据结果： *** %@", responseObject);
+            id result = _httpResponseSerializer == YJHttpResponseSerializerJSON ? [self dataFormat:responseObject] : responseObject;
             
-            if (item.successBlock)
+            BOOL isValid = [self yj_network:item task:task result:result error:nil];
+            
+            if (item.successBlock && isValid)
             {
-                item.successBlock([self dataFormat:responseObject]);
+                item.successBlock(result);
             }
             
             // 对数据进行异步缓存
@@ -324,9 +333,9 @@ static YJHttpResponseSerializer _httpResponseSerializer = YJHttpResponseSerializ
             [[weakSelf tasks] removeObject:sessionTask];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"错误信息：%@",error);
             
-            if (item.failureBlock)
+            BOOL isValid = [self yj_network:item task:task result:nil error:error];
+            if (item.failureBlock && isValid)
             {
                 item.failureBlock(error);
             }
@@ -338,16 +347,21 @@ static YJHttpResponseSerializer _httpResponseSerializer = YJHttpResponseSerializ
     {
         sessionTask = [sessionManager PUT:URLString parameters:item.parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            if (item.successBlock)
+            id result = _httpResponseSerializer == YJHttpResponseSerializerJSON ? [self dataFormat:responseObject] : responseObject;
+            
+            BOOL isValid = [self yj_network:item task:task result:result error:nil];
+            
+            if (item.successBlock && isValid)
             {
-                item.successBlock([self dataFormat:responseObject]);
+                item.successBlock(result);
             }
             
             [[weakSelf tasks] removeObject:sessionTask];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
-            if (item.failureBlock)
+            BOOL isValid = [self yj_network:item task:task result:nil error:error];
+            if (item.failureBlock && isValid)
             {
                 item.failureBlock(error);
             }
@@ -358,16 +372,21 @@ static YJHttpResponseSerializer _httpResponseSerializer = YJHttpResponseSerializ
     else if (item.httpRequestType == YJHttpRequestTypeDelete)
     {
         sessionTask = [sessionManager DELETE:URLString parameters:item.parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            if (item.successBlock)
+            id result = _httpResponseSerializer == YJHttpResponseSerializerJSON ? [self dataFormat:responseObject] : responseObject;
+            
+            BOOL isValid = [self yj_network:item task:task result:result error:nil];
+            
+            if (item.successBlock && isValid)
             {
-                item.successBlock([self dataFormat:responseObject]);
+                item.successBlock(result);
             }
             
             [[weakSelf tasks] removeObject:sessionTask];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
-            if (item.failureBlock)
+            BOOL isValid = [self yj_network:item task:task result:nil error:error];
+            if (item.failureBlock && isValid)
             {
                 item.failureBlock(error);
             }

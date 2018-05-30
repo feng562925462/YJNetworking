@@ -25,7 +25,11 @@
 
 #pragma mark - 网络请求的类方法 --- get / post / put / delete
 
+// 参数处理
 - (NSDictionary *)yj_processingWithItem:(YJNetworkItem *)item;
+
+/// 是否执行网络请求结果的回掉
+- (BOOL)yj_network:(YJNetworkItem *)item task:(NSURLSessionTask *)task result:(id)result error:(NSError *)error;
 
 - (NSURLSessionTask *)yj_requestWithItem:(YJNetworkItem *)item;
 
