@@ -79,11 +79,11 @@ typedef void( ^YJProgressBlock)(int64_t bytesProgress,
 /** 请求类型 get / post / put / delete */
 @property (nonatomic, assign) YJHttpRequestType httpRequestType;
 /** 请求成功的回调 */
-@property (nonatomic, assign) YJResponseSuccessBlock successBlock;
+@property (nonatomic, copy) YJResponseSuccessBlock successBlock;
 /** 请求失败的回调 */
-@property (nonatomic, assign) YJResponseFailBlock failureBlock;
+@property (nonatomic, copy) YJResponseFailBlock failureBlock;
 /** 进度 */
-@property (nonatomic, assign) YJProgressBlock progressBlock;
+@property (nonatomic, copy) YJProgressBlock progressBlock;
 @end
 
 @interface YJNetworkFileItem : YJNetworkItem
